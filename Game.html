@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="game.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+    <div class = "content-area">
+
+            <div class = "pref-area">
+
+            </div>
+
+
+            <!--Приложеньеце-->
+            <!--Начальное окно-->
+            <div id="main-screen" class = "center-full-screen">
+                <h1 class = "game-name">Find a square!</h1>
+                <button class="button-play" id="start-main"><p class = "big">Начать</p></button>
+            </div>
+
+            <!--Выбираем уровень-->
+            <div id ="choose-level" class = "center-full-screen">
+                <h1 class = "menu">Выберите уровень</h1>
+                <button class="button-level" id="level-easy">Легко</button>
+                <button class="button-level" id="level-easy">Средне</button>
+                <button class="button-level" id="level-hard">Сложно</button>
+                <button class="button-level" id="level-create">Настроить</button>   
+                <button class="button-back-menu" onclick="backToMain()">Main</button>
+            </div>
+
+            <!--Создаем свой уровень-->
+            <div id ="create-level" class = "center-full-screen">
+                <div>
+                    <input type="checkbox" id="rotateAny"/>
+                    <label for="rotateAny">Поворот любой</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="anySize"/>
+                    <label for="anySize">Разный размер</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="rotate90"/>
+                    <label for="rotate90">Поворот 90 градусов</label>
+                </div>
+                <div class="input">
+                    <label for="count-color">Количетсво цветов</label>
+                    <input type="number" id="count-color" min="2" max ="8" step="1" value="3">
+                </div>
+                <div class="input">
+                    <label for="count-ceils">Количетсво клеток n*n</label>
+                    <input type="number" id="count-ceils" min="2" max ="7" step="1" value="3">
+                </div>
+                <div class="input">
+                    <label for="count-square">Количетсво квадратов</label>
+                    <input type="number" id="count-square" min="2" max ="100" step="1" value="3">
+                </div>
+
+                <button class="button-start" id = "choose-settings" onclick="toGame()">Продолжить</button>
+                <button class="button-back-menu" onclick="backToMain()">Main</button>
+            </div>
+
+            <!--Играем!-->
+            <div id ="do-game">
+                <button class="button-back-menu" onclick="backToMain()">Main</button>
+                <button class="button-start" id="start-game" onclick="startGame()">Начать</button>
+                <div class = "game-area">
+                    <h1 id="time-header">Время игры: <span id="time">5.0</span></h1>
+                    <div class = "find-area" id = "find"></div>
+                    <div class = "generate-area" id = "generate"> <!--Поле для генерации квадратиков-->
+        
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+    
+    <script src="game.js"></script>
+    <script src="setting.js"></script>
+    <script src="generator.js"></script>
+    <script src="gameState.js"></script>
+    <script src="checkSessionStorage.js"></script>
+    <script src="game.js"></script>
+    
+</body>
+</html>
