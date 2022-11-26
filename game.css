@@ -5,29 +5,31 @@
     width: 100%;
     background-color: rgb(250, 221, 255);
 }
-.generate-area
-{
-    position:relative;
-    width: 100%;
 
-    text-align: center;
-}
-.find-area
-{
-    position:relative;
-    width: 100%;
-    background-color: rgb(175, 255, 173);
-}
 
 /*square*/
-.square, .square-find
+.square, .square-find, .square-example
 {
     font-size:0;
     width: 200px;
     height: 200px;
     position: relative;
     display:inline-block;
-    margin: 50px;
+    /*margin: 50px;*/
+}
+.square-example
+{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:rotate(0), translate(-50%,-50%);
+    margin: 0;
+}
+.square-animate
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 .square:active
 {
@@ -76,6 +78,7 @@ h1.menu
     text-align: center;
     font-size: 3rem;
 }
+
 /*first-second-menu*/
 .center-full-screen
 {
@@ -88,12 +91,109 @@ h1.menu
 /*GAME*/
 .game-area
 {
-    width: 100%;
-    background-color: white;
+    width: 90%;
+    height: 90vh;
+    background-color: transparent;
     border-radius: 50px;
     overflow: hidden;
+    margin:0 auto;
+    position: relative;
 }
 
+.generate-area
+{
+    position:relative;
+    width: 100%;
+    height: 80%;
+    text-align: center;
+    overflow: hidden;
+    font-size: 0;
+    background-color: white;
+}
+.find-block
+{
+    position:relative;
+    width: 100%;
+    height: 20%;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    border-bottom: 2px dotted red;
+}
+.timer-area
+{
+    position: absolute;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(250, 255, 173);
+}
+.find-area
+{
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    left: 35%;
+    background-color: rgb(251, 255, 181);
+}
+.score-area
+{
+    position: absolute;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(250, 255, 173);
+}
+h1.timer
+{
+    display: inline-block;
+    text-align: left;
+    position: relative;
+}
+
+.hide-div
+{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+.save-div
+{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+.start-panel
+{
+    position: absolute;
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+    /*box-shadow: 0 0 1440px 1440px rgb(221, 255, 152);*/
+}
+.start-panel-square
+{
+    position: absolute;
+    margin: 0;
+    background-color: rgb(152, 255, 136);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 50%;
+    width: 50%;
+}
+@media (orientation:portrait)
+{
+
+}
 /*buttons*/
 p.big
 {
@@ -114,13 +214,16 @@ p.big
 
 .button-level
 {
-    background-color: #736DD1;
+    background-color: #1009536a;/*#0400266a;*/
+    color: rgb(243, 235, 255);
+    font-weight: 900;
+    border: 0px solid white;
     display:block;
     border-radius: 10px;
-    border:0px;
     margin: 50px auto;
-    height: 100px;
+    height: 50px;
     width: 200px;
+    font-size: 25px;
 }
 
 .button-start
@@ -135,4 +238,9 @@ p.big
     background-color: #736DD1;
     display:block;
     margin: 0 auto;
+}
+
+.button-big 
+{
+
 }

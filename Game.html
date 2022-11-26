@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="rus">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,11 +26,12 @@
             </div>
 
             <!--Выбираем уровень-->
-            <div id ="choose-level" class = "center-full-screen">
+            <div id ="choose-level" class = "center-full-screen2">
                 <h1 class = "menu">Выберите уровень</h1>
                 <button class="button-level" id="level-easy">Легко</button>
                 <button class="button-level" id="level-easy">Средне</button>
                 <button class="button-level" id="level-hard">Сложно</button>
+                <button class="button-level" id="level-hard">Тренировка</button>
                 <button class="button-level" id="level-create">Настроить</button>   
                 <button class="button-back-menu" onclick="backToMain()">Main</button>
             </div>
@@ -69,13 +70,27 @@
             <!--Играем!-->
             <div id ="do-game">
                 <button class="button-back-menu" onclick="backToMain()">Main</button>
-                <button class="button-start" id="start-game" onclick="startGame()">Начать</button>
-                <div class = "game-area">
-                    <h1 id="time-header">Время игры: <span id="time">5.0</span></h1>
-                    <div class = "find-area" id = "find"></div>
-                    <div class = "generate-area" id = "generate"> <!--Поле для генерации квадратиков-->
-        
+                
+                <div class = "game-area" id = "game-field">
+                    <div class = "start-panel" id = "start-panel">
+                        <div class = "start-panel-square" id = "square-animate"></div>
+                        <button class="button-start" id="start-game" onclick="startGame()">Начать</button>
                     </div>
+
+                    <div id = "hide-field" class = "hide-div">
+                        <div class = "find-block" id = "find-block">
+                            <div class = "score-area" id = "score"></div>
+                            <div class = "timer-area">
+                                <h1 id="time-header" class = "timer"> <span id="time">5.0</span></h1>
+                            </div>                  
+                            <div id = "find" class = "find-area"></div>
+                        </div>
+                        <div class = "generate-area" id = "generate"> <!--Поле для генерации квадратиков  Время игры:-->
+            
+                        </div>
+                    </div>
+   
+
                 </div>
 
             </div>
@@ -84,10 +99,14 @@
     
     <script src="game.js"></script>
     <script src="setting.js"></script>
+    <script src="resize.js"></script>
     <script src="generator.js"></script>
     <script src="gameState.js"></script>
+
+    <script src="startPanel-animate.js"></script>
+
+    <!--Самый последний!!!-->
     <script src="checkSessionStorage.js"></script>
-    <script src="game.js"></script>
     
 </body>
 </html>

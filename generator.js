@@ -39,31 +39,33 @@ function selectColors() //отбираем цвета
 }
 
 
-function generateSquare() //создаем квадрат
+function generateSquare(n) //создаем квадрат
 {
-    var sizeSquareSection = (Math.ceil(100/countCeils)+1)+"%";
+    var sizeSquareSection = (Math.ceil(100/n)+1)+"%";
 
     var newSquare = document.createElement('div');
     newSquare.className = "square";
 
     var sizeSquare;
+    var sizeSquare2=1;
     if (anySize)
     {
         sizeSquare = getRandom(100,150);
+        sizeSquare2=getRandom(50,100)/100;
     }
     else sizeSquare = standartSizeSquare;
 
-    newSquare.style.width = sizeSquare+'px';
-    newSquare.style.height = sizeSquare+'px';
-    newSquare.style.margin = sizeSquare/4+"px";
+    //newSquare.style.width = sizeSquare+'px';
+    //newSquare.style.height = sizeSquare+'px';
+    //newSquare.style.margin = sizeSquare/4+"px";
 
-
+    newSquare.setAttribute("data-size", sizeSquare2)
     //colors Generate
-    colorListForCheck=new Array(countCeils);
+    colorListForCheck=new Array(n);
 
     for (var i=0; i<countCeils; i++)
     {
-        colorListForCheck[i] = new Array(countCeils);
+        colorListForCheck[i] = new Array(n);
     }
     
     colorListForCheck = generateColors(colorListForCheck);
@@ -71,16 +73,16 @@ function generateSquare() //создаем квадрат
     {
         colorListForCheck = generateColors(colorListForCheck);
     }
-    allColorsUsing.push(colorListForCheck);
+    //allColorsUsing.push(colorListForCheck);
     //////////////
 
-    for (var i=0; i<countCeils; i++)
+    for (var i=0; i<n; i++)
     {
-        var top = i*(100/countCeils)+'%';
+        var top = i*(100/n)+'%';
 
-        for (var k=0; k<countCeils; k++)
+        for (var k=0; k<n; k++)
         {
-            var left = k*(100/countCeils)+'%';
+            var left = k*(100/n)+'%';
             var section = document.createElement('div');
             section.className = "square-section";
             //section.style.backgroundColor = 'rgb(' + getRandom(30,250)+','+getRandom(30,250)+','+getRandom(30,250)+')';
@@ -158,16 +160,17 @@ function doSquare()
         target = document.createElement('div');
         target.className = "target-bottom";
         target.setAttribute('data-find', 'false');
-        arraySquareReady[i]= generateSquare();
+        arraySquareReady[i]= generateSquare(countCeils);
         arraySquareReady[i].appendChild(target);
     }
 
     arraySquareReady[getRandom(0, countSquare)] = find;
 
-    findSquare.style.transform="rotate(0deg)"
+    //findSquare.style.transform="rotate(0deg)"
     findSquare.style.height = standartSizeSquare+'px';
     findSquare.style.width = standartSizeSquare+'px';
     findSquare.style.margin = standartSizeSquare/4+"px";
+    //findSquare.className = "square-example"
     //console.log(allColorsUsing);
 }
 
@@ -190,9 +193,9 @@ function checkColors(check)
 function generateFindSquare()
 {
     
-    findSquare = generateSquare(3);
+    findSquare = generateSquare(countCeils);
     findSquare.className = "square-find";
-
+    allColorsUsing.push(colorListForCheck);
     allColorsUsing.push(rotateMatrix(allColorsUsing[0]));
     allColorsUsing.push(rotateMatrix(allColorsUsing[1]));
     allColorsUsing.push(rotateMatrix(allColorsUsing[2]));

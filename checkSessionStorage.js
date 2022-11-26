@@ -22,12 +22,13 @@ function checkState()
     {
         sessionStorage.state = 'main-screen'
         changeStates('main-screen')
-        console.log("No")
+        //console.log("No")
     }
     else 
     {
-        console.log("Yes")
-        switch(sessionStorage.state )
+        //console.log("Yes")
+        currentState = sessionStorage.state;
+        switch(sessionStorage.state)
         {
             case "main-screen":
                 {
@@ -57,16 +58,45 @@ function checkSettings()
 {
     if (sessionStorage.rotateAny != undefined) 
     {
-        rotateAny = sessionStorage.rotateAny;
-        $checkRotateAny.checked = rotateAny;
+        if (sessionStorage.rotateAny === "true")
+        {
+            rotateAny=true;
+            $checkRotateAny.checked = true;
+
+        }
+        else
+        {
+            rotateAny = false;
+            $checkRotateAny.checked = false;
+        }
+        
     }
     if (sessionStorage.rotate90 != undefined) {
-        rotate90 = sessionStorage.rotate90;
-        $checkRotate90.checked = rotate90;
+        if (sessionStorage.rotate90 === "true")
+        {
+            rotate90=true;
+            $checkRotate90.checked = true;
+
+        }
+        else
+        {
+            rotate90 = false;
+            $checkRotate90.checked = false;
+        }
     }
-    if (sessionStorage.anySize != undefined) {
-        anySize = sessionStorage.anySize;
-        $checkAnySize.checked = anySize;    
+    if (sessionStorage.anySize != undefined) 
+    {
+        if (sessionStorage.anySize === "true")
+        {
+            anySize=true;
+            $checkAnySize.checked = true;
+
+        }
+        else
+        {
+            anySize = false;
+            $checkAnySize.checked = false;
+        } 
     }
 
     ////////////
@@ -85,14 +115,9 @@ function checkSettings()
         $inputCountSquare.value = countSquare;
     }
 }
-
-checkState();
 checkSettings();
+checkState();
 
-function recoverGame()
-{
-    //восстановить все данные начатой игры
-}
 
 function saveAllSettings()
 {

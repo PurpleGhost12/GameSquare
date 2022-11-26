@@ -32,11 +32,12 @@ $checkRotateAny.addEventListener('change', function() {
     rotateAny=true;
     rotate90 = false;
     $checkRotate90.checked = false;
+    sessionStorage.rotate90 = rotate90;
   } else {
     rotateAny=false;
   }
   sessionStorage.rotateAny = rotateAny;
-  sessionStorage.rotate90 = rotate90;
+  
   //console.log(sessionStorage.rotateAny);
 });
 
@@ -56,11 +57,12 @@ $checkRotate90.addEventListener('change', function() {
     rotate90=true;
     rotateAny = false;
     $checkRotateAny.checked = false;
+    sessionStorage.rotateAny = rotateAny;
   } else {
     rotate90=false;
   }
   sessionStorage.rotate90 = rotate90;
-  sessionStorage.rotateAny = rotateAny;
+  console.log(sessionStorage.rotate90);
 });
 
 //Input events

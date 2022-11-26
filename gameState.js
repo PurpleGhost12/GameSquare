@@ -12,7 +12,7 @@ var $doGame = document.getElementById("do-game");
 sessionStorage.test = 'test';
 console.log(sessionStorage.test) //this is works
 
-
+var currentState='main-screen';
 //buttons change states
 
 //menu start
@@ -23,19 +23,26 @@ $buttonMain.addEventListener('click', function() {
 
   //choose level
 var $buttonLevelEasy = document.getElementById("level-easy");
-$buttonLevelEasy.addEventListener('click', function() {
-      changeStates("do-game");
+$buttonLevelEasy.addEventListener('click', function() { 
       //настройки
       rotateAny = false;
+      
       rotate90 = false;
+      $checkRotate90.checked = false;
       anySize = false;
+      $checkAnySize.checked = false;
+      $checkRotateAny.checked = false;
       
       colorsCount=3;
       countCeils=3;
       countSquare=10;
-      saveAllSettings()
+      saveAllSettings();
+      //gameState в конце!!!!
+      changeStates("do-game");
     });
   
+
+
 var $buttonHandle = document.getElementById("level-create");
 $buttonHandle.addEventListener('click', function() {
       changeStates("create-level");
@@ -49,13 +56,14 @@ $buttonHandle.addEventListener('click', function() {
   //Change screen/state
   function changeStates(newState)
   {
-    console.log(sessionStorage.state);
-    console.log(newState);
+    //console.log(sessionStorage.state);
+    //console.log(newState);
 
-    findState(sessionStorage.state, 'none');
+    findState(currentState, 'none');
     findState(newState, 'block');
 
     sessionStorage.state = newState;
+    currentState = newState;
 
     function findState(findSt, doWhat)
     {
@@ -81,6 +89,12 @@ $buttonHandle.addEventListener('click', function() {
             case "do-game":
                 {
                     $doGame.style.display = doWhat;
+                    if (doWhat === "block") createPanel();
+                    else 
+                    {
+                      endGame();
+                      hidePanel();
+                    }
                     break;
                 }
         }
@@ -91,7 +105,10 @@ $buttonHandle.addEventListener('click', function() {
   {
     changeStates('main-screen');
   }
+function toLevel()
+{
 
+}
   function toGame()
   {
     changeStates('do-game');
